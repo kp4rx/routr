@@ -18,7 +18,7 @@
  */
 /* eslint-disable require-jsdoc */
 import * as grpc from "@grpc/grpc-js"
-import { CliUx } from "@oclif/core"
+import { ux } from "@oclif/core"
 import { BaseCommand } from "../../base"
 import { CLIError } from "@oclif/core/lib/errors"
 import { aclRuleValidator, nameValidator } from "../../validators"
@@ -80,12 +80,12 @@ Creating ACL US Eeast... b148b4b4-6884-4c06-bb7e-bd098f5fe793
       if (!answers.confirm) {
         this.warn("Aborted")
       } else {
-        CliUx.ux.action.start(`Creating ACL ${answers.name}`)
+        ux.action.start(`Creating ACL ${answers.name}`)
         const api = new SDK.ACL({ endpoint, insecure, cacert })
         const acl = await api.createACL(answers)
 
-        await CliUx.ux.wait(1000)
-        CliUx.ux.action.stop(acl.ref)
+        await ux.wait(1000)
+        ux.action.stop(acl.ref)
       }
     } catch (e) {
       if (e.code === grpc.status.ALREADY_EXISTS) {

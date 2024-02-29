@@ -17,20 +17,20 @@
  * limitations under the License.
  */
 /* eslint-disable require-jsdoc */
-import { Command, Flags } from "@oclif/core"
+import { Command, Args } from "@oclif/core"
 
 export abstract class BaseCommand extends Command {
   static readonly globalFlags = {
-    insecure: Flags.boolean({
+    insecure: Args.boolean({
       char: "i",
       description: "allow insecure connections to the routr server",
       default: false
     }),
-    cacert: Flags.string({
+    cacert: Args.string({
       char: "c",
       description: "path to the CA certificate to verify the server"
     }),
-    endpoint: Flags.string({
+    endpoint: Args.string({
       char: "e",
       description: "endpoint to connect to the routr server",
       default: "localhost:51908"
